@@ -1,0 +1,245 @@
+#include<stdio.h> 
+
+#include<stdlib.h> 
+
+#include<locale.h> 
+
+int main(){ 
+
+    setlocale(LC_ALL, "Portuguese");//Permite a utilização de acentos e letras em português 
+
+     
+
+    char opcao;// variável do tipo caractere 
+
+    int c,d,peca,linha,coluna,posicao;// variáveis do tipo inteiro 
+
+    int valores[8][8]={0};//Apresenta ao usuário uma matriz de oito linhas e oito colunas 
+
+    do { 
+
+         
+
+         
+
+        for(d=0;d<8;d++ ){ 
+
+            printf("    ___________________________________________________________\n\n"); 
+
+            for(c=0;c<8;c++ ){  
+
+              
+
+                 
+
+                 
+
+                     
+
+                 
+
+                printf("    |%d|",valores[d][c]); 
+
+             
+
+            } 
+
+            printf("\n"); 
+
+             
+
+                 
+
+        } 
+
+        printf("    ___________________________________________________________\n"); 
+
+     
+
+        printf("1 = peões 3 = torres 5 = reis 0 = ausência de peças 2 = cavalos 4 = bispos 6 = rainhas \n");//As peças que podem ser escolhidas 
+
+        printf("Deseja colocar que peça no tabuleiro?\n"); 
+
+        scanf_s("%d",&peca);//recebe o valor da peça 
+
+        if(peca != 0 and peca != 1 and peca != 2 and peca != 3 and peca != 4 and peca != 5 and peca != 6){ 
+
+            printf("Peça inválida. Logo não será adicionada nenhuma peça.\n ");// Testa se a peça é diferente dos valores utilizados no programa 
+
+            peca = 0;//Se a peça é inválida , ela deve continuar com o valor 0  
+
+             
+
+        } 
+
+        else{ 
+
+             
+
+            printf("Em que coluna deseja colocar essa peça?"); 
+
+            scanf_s("%d",&linha);//recebe o valor da coluna em que a peça ficará 
+
+            printf("Em que linha deseja colocar essa peça?"); 
+
+            scanf_s("%d",&coluna);//recebe o valor da linha em que a peça ficará 
+
+         
+
+            valores[coluna][linha] = peca;//substitui a peça que tinha valor 0 pela peça que o usuário escolheu na posição escolhida 
+
+         
+
+        } 
+
+         
+
+        for(d=0;d<8;d++ ){ 
+
+            printf("    ___________________________________________________________\n\n"); 
+
+            for(c=0;c<8;c++ ){  
+
+              
+
+                 
+
+                 
+
+                     
+
+                 
+
+                printf("    |%d|",valores[d][c]); 
+
+             
+
+            } 
+
+            printf("\n"); 
+
+             
+
+                 
+
+        } 
+
+        printf("    ___________________________________________________________\n"); 
+
+     
+
+        printf("Deseja sair? [S/N] "); 
+
+        scanf_s("%s",&opcao);//ao apertar S o usuário termina o programa  
+
+         
+
+         
+
+         
+
+         
+
+     
+
+         
+
+     
+
+    } while(opcao!='S');// condição para que o loop infinito seja realizado 
+
+     
+
+    int bispo=0,torres=0, cavalo=0,peao=0,rainha=0,rei = 0;//variáveis para contar o número de peças do tabuleiro 
+
+     
+
+    for(d=0;d<8;d++ ){ 
+
+         
+
+        for(c=0;c<8;c++ ){  
+
+            if(valores[d][c] == 1){//CONTA AS PEÇAS DE CADA TIPO QUE HÁ NO TABULEIRO 
+
+                peao++; 
+
+                 
+
+            } 
+
+            else if(valores[d][c] == 2){ 
+
+                cavalo++; 
+
+            } 
+
+            else if(valores[d][c] == 3){ 
+
+                torres++; 
+
+            } 
+
+            else if(valores[d][c] == 4){ 
+
+                bispo++; 
+
+            } 
+
+            else if(valores[d][c] == 5){ 
+
+                rei++; 
+
+            } 
+
+            else if(valores[d][c] == 6){ 
+
+                rainha++; 
+
+            } 
+
+            else{ 
+
+                 
+
+                     
+
+            } 
+
+                 
+
+                 
+
+                                 
+
+        } 
+
+    } 
+
+     
+
+     
+
+    //Mostra quantas peças de cada tipo  
+
+    printf("O TABULEIRO POSSUI:\n %i REIS \n %i RAINHAS \n %i BISPOS \n %i PEÕES \n %i CAVALOS \n %i TORRES \n",rei,rainha,bispo,peao,cavalo,torres); 
+
+     
+
+     
+
+     
+
+     
+
+     
+
+    system("pause"); 
+
+    return 0 ; 
+
+     
+
+     
+
+} 
